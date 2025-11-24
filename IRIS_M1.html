@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="QUIZ_BEE_TEMPLATE_WITH_IMAGE _NO_TIMER.css">
+    <link rel="icon" href="LOGO_THREE_STEM_SOCIETY.png">
+    <title>UC STEM SOCIETY</title>
+</head>
+<body>
+
+<section class="SECTION_ONE">  
+
+<div class="SECTION_ONE_INTRODUCTORY">
+<h1>
+    MODULE 1: 
+</h1>
+
+<P>
+    <b>INSTRUCTION:</b>
+    Select the correct answer for each question. You have 3 lives to complete the quiz. If you choose the wrong answer, you will lose a life. Once all your lives are gone, the quiz will end. Good luck!
+</P>
+
+<a href="IRIS_HOMEPAGE.html">GO BACK</a>
+</div>
+
+<div class="quiz-container">
+    <div id="quiz" style="display: none;">
+        <div id="lives" class="lives">Lives: 3</div>
+
+        <!-- PUT YOUR IMAGE QUESTION HERE -->
+
+            <!-- IMAGE 1 -->
+            <img id="questionImage" class="question-image" src="JAVA SAMPLE.png" alt="Question Image 1" style="display: none; max-width: 80%; height: auto; text-align: center;">
+            
+            <!-- IMAGE 2
+            <img id="questionImage2" class="question-image" src="JAVA SAMPLE.png" alt="Question Image 2" style="display: none; max-width: 80%; height: auto;"> -->
+       
+        <!-- PUT YOUR IMAGE QUESTION HERE -->
+
+        <div id="question" class="question">Press Start to Begin</div>
+        <div id="answers" class="answers"></div>
+    </div>
+    <button id="startBtn" class="start-btn">Start</button>
+    <div id="gameOver" class="game-over" style="display: none;">Game Over! Refresh to play again.</div>
+</div>
+
+</section>
+
+<script>
+   const quizData = [
+        { 
+            question: "What is not a characteristics of an Algorithm", 
+            // image: "QUESTION IMAGE 1", 
+            options: ["Finite", "Well-defined", "Effectiveness", "None of the above"], 
+            correct: 3 
+        },
+        { 
+            question: "This language provides little to no abstraction from a computer’s instruction set architecture.",
+            //image: "JAVA SAMPLE.png", 
+            options: ["Low-level Language", "High-level Language", "Mid-level Language ", "None of the above"], 
+            correct: 0 
+        },
+        {
+            question: "This language enables programmers to write programs that are close to human language and further from machine language.",
+            // image: "QUESTION IMAGE 1",
+            options: ["Low-level Language", "High-level Language", "Mid-level Language", "None of the above"],
+            correct: 1
+        },
+        {
+            question: "What is the type of language called wherein the source code written by a programmer is translated into machine code before it can be executed by the computer?",
+            // image: "QUESTION IMAGE 2",
+            options: ["Interpreted Language", "Compiled Languages", "Translation Languages", "None of the above"],
+            correct: 1
+        },
+        {
+            question: "What is the type of language called wherein the source code is executed line by line and directly reads and executes each instruction without translating the entire program into machine code beforehand?",
+            // image: "QUESTION IMAGE 3",
+            options: ["Interpreted Language", "Compiled Languages", "Translation Languages", "None of the above"],
+            correct: 0
+        },
+        {
+            question: "Which is NOT an advantage of Interpreted Languages?",
+            // image: "QUESTION IMAGE 3",
+            options: ["Flexibility", "Performance", "Ease of use", "Platform Independence"],
+            correct: 1
+        },
+        {
+            question: "One of the most widely used and universal programming languages",
+            // image: "QUESTION IMAGE 3",
+            options: ["Java", "Python", "English", "C++"],
+            correct: 0
+        },
+        {
+            question: "This is the ordering and forming of words",
+            // image: "QUESTION IMAGE",
+            options: ["Syntax", "Source Code", "Semantics", "Keyword"],
+            correct: 0
+        },
+        {
+            question: "These are one or more lines of code terminated by a semicolon",
+            // image: "QUESTION IMAGE",
+            options: ["Blocks", "Variables", "Statements", "Comments"],
+            correct: 2
+        },
+        {
+            question: "These are zero or more statements bound by an open and close curly brace",
+            // image: "QUESTION IMAGE",
+            options: ["Blocks", "Variables", "Statements", "Comments"],
+            correct: 0
+        },
+        {
+            question: "What is the entry point of any Java program?",
+            // image: "QUESTION IMAGE",
+            options: ["Void Method", "Main Method", "Entry Method", "Public Method"],
+            correct: 1
+        },
+        {
+            question: "Which of the following are INVALID Variable names?",
+            // image: "QUESTION IMAGE",
+            options: ["eats", "e4ts", "eat$_", "3at$"],
+            correct: 3
+        },
+        {
+            question: "Which of the following is NOT a Primitive Data Type?",
+            // image: "QUESTION IMAGE",
+            options: ["int", "String", "double", "boolean"],
+            correct: 1
+        },
+        {
+            question: "Which of the following are NOT valid syntaxes?",
+            // image: "QUESTION IMAGE",
+            options: [
+                "String storeName = \"\";",
+                "char i = \"~\";",
+                "double finalGrade = 2.0;",
+                "None of the above"
+            ],
+            correct: 1
+        },
+        {
+            question: "What is the primary purpose of the main method in a Java program?",
+            // image: "QUESTION IMAGE",
+            options: [
+                "To define variables for the program",
+                "To execute the program when it starts",
+                "To create new classes in the program",
+                "To handle exceptions in the program"
+            ],
+            correct: 1
+        },
+    {
+        question: "Which of the following is the correct way to declare a variable in Java?",
+        // image: "QUESTION IMAGE",
+        options: ["int 5number;", "int number = 5;", "number = 5; int", "5 = int number;"],
+        correct: 1
+    },
+    {
+        question: "Which of the following keywords is used to create a new object in Java?",
+        // image: "QUESTION IMAGE",
+        options: ["new", "create", "object", "initialize"],
+        correct: 0
+    },
+    {
+        question: "What does the System.out.println() method do in Java?",
+        // image: "QUESTION IMAGE",
+        options: [
+            "It prints a message to the screen",
+            "It closes the output stream",
+            "It reads user input from the keyboard",
+            "It executes a program"
+        ],
+        correct: 0
+    },
+    {
+        question: "Which of the following statements is true about Java's data types?",
+        // image: "QUESTION IMAGE",
+        options: [
+            "Java is a dynamically-typed language",
+            "Java is a statically-typed language",
+            "Java does not support primitive data types",
+            "Java can only use the String data type for text"
+        ],
+        correct: 1
+    },
+    {
+        question: "What is the default value of a boolean variable in Java?",
+        // image: "QUESTION IMAGE",
+        options: ["1", "true", "false", "null"],
+        correct: 2
+    }
+
+
+
+        
+    ];
+
+    const livesEl = document.getElementById('lives');
+    const timerEl = document.getElementById('timer');
+    const questionEl = document.getElementById('question');
+    const answersEl = document.getElementById('answers');
+    const startBtn = document.getElementById('startBtn');
+    const gameOverEl = document.getElementById('gameOver');
+    const refreshBtn = document.createElement('button');
+    const quizEl = document.getElementById('quiz');
+    const questionImageEl = document.getElementById('questionImage');
+
+    let currentQuestion = 0;
+    let lives = 3;
+    let timer;
+    let timeLeft = 30;
+    let score = 0;
+
+    function shuffleQuestions() {
+        for (let i = quizData.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [quizData[i], quizData[j]] = [quizData[j], quizData[i]];
+        }
+    }
+
+    function loadQuestion() {
+        if (currentQuestion >= quizData.length) {
+            endGame();
+            return;
+        }
+
+        quizEl.style.display = 'block';
+        const q = quizData[currentQuestion];
+        questionEl.textContent = q.question;
+        answersEl.innerHTML = '';
+
+        if (q.image) {
+            questionImageEl.src = q.image;
+            questionImageEl.style.display = 'block';
+        } else {
+            questionImageEl.style.display = 'none';
+        }
+
+        q.options.forEach((option, index) => {
+            const btn = document.createElement('button');
+            btn.textContent = option;
+            btn.className = 'answer';
+            btn.addEventListener('click', () => handleAnswer(index));
+            answersEl.appendChild(btn);
+        });
+
+        resetTimer();
+    }
+
+    function handleAnswer(selected) {
+        const q = quizData[currentQuestion];
+        if (selected === q.correct) {
+            score++;
+            currentQuestion++;
+            loadQuestion();
+        } else {
+            lives--;
+            updateLives();
+            if (lives === 0) {
+                endGame();
+            }
+        }
+    }
+
+    function updateLives() {
+        livesEl.textContent = `Lives: ${lives}`;
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        timeLeft = 10;
+        timerEl.textContent = `Time: ${timeLeft}`;
+        timer = setInterval(() => {
+            timeLeft--;
+            timerEl.textContent = `Time: ${timeLeft}`;
+            if (timeLeft === 0) {
+                lives--;
+                updateLives();
+                if (lives === 0) {
+                    endGame();
+                } else {
+                    currentQuestion++;
+                    loadQuestion();
+                }
+            }
+        }, 1000);
+    }
+
+    function endGame() {
+    clearInterval(timer); // Stop the timer
+
+    // Hide all quiz elements
+    quizEl.style.display = 'none';
+
+    // Show game over message
+    gameOverEl.style.display = 'block';
+    gameOverEl.textContent = `Your score is ${score}.`;
+
+    // Add "Play Again" button
+    refreshBtn.textContent = "Play Again";
+    refreshBtn.className = 'start-btn';
+    refreshBtn.style.marginTop = '20px';
+
+    // Append button only if it's not already there
+    if (!gameOverEl.contains(refreshBtn)) {
+        gameOverEl.appendChild(refreshBtn);
+    }
+
+    refreshBtn.addEventListener('click', () => {
+        location.reload(); // Restart the game
+    });
+}
+
+    startBtn.addEventListener('click', () => {
+        shuffleQuestions();
+        startBtn.style.display = 'none';
+        loadQuestion();
+    });
+</script>
+
+</body>
+</html>
